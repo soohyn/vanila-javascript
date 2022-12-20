@@ -2,12 +2,22 @@
   all: unset;
 }
 
-.to-do-list-container {
+.background-container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   border: 1px dotted red;
 }
 
 .current-time {
+  display: flex;
+  justify-content: center;
   font-size: 88px;
   font-weight: 700;
+  border: 1px dotted blue;
+}
+
+.to-do-list-container {
+  display: flex;
+  border: 1px solid blue;
 }
