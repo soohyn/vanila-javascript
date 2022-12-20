@@ -19,5 +19,6 @@ function prepareClock() {
   setCurrentTimeText(currentTimeText);
 }
 
-//parepareClock()만 실행했을 때 안되는 이유를 찾아야 함
+//id = current-time이 생성되기 전에 함수호출이 이뤄지면 에러나서 오버라이딩
+window.onload = prepareClock;
 setInterval(prepareClock, 1000);
