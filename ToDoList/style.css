@@ -21,3 +21,28 @@
   display: flex;
   border: 1px solid blue;
 }
+
+.to-do-list {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 20px;
+  background-color: lightblue;
+  border-radius: 20px;
+}
+
+.to-do-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.to-do-item > input {
+  border: unset;
+  width: 20px;
+  height: 20px;
+}
+
+.to-do-item > label {
+  cursor: pointer;
+}
