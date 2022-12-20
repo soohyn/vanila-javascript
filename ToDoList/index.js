@@ -1,16 +1,22 @@
+/**
+ * 현재 시간을 텍스트 가져오기
+ * @returns
+ */
 function getCurrentTimeText() {
   var hour = new Date().getHours();
   var min = new Date().getMinutes();
   var sec = new Date().getSeconds();
 
   var currentTimeText = hour + ":" + min + ":" + sec;
-
   return currentTimeText;
 }
 
+/**
+ * 시간 텍스트를 돔에 넣기
+ * @param {} text
+ */
 function setCurrentTimeText(text) {
   var currentTimeElement = document.getElementById("current-time");
-  console.log("[set]", currentTimeElement, text);
   currentTimeElement.innerText = text;
 }
 
