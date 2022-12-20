@@ -1,4 +1,15 @@
 /**
+ * 시간 두자리 수로 변경
+ */
+function setTextDoubleDigit(number) {
+  if (number < 10) {
+    return "0" + number;
+  } else {
+    return "" + number;
+  }
+}
+
+/**
  * 현재 시간을 텍스트 가져오기
  * @returns
  */
@@ -7,7 +18,11 @@ function getCurrentTimeText() {
   var min = new Date().getMinutes();
   var sec = new Date().getSeconds();
 
-  var currentTimeText = hour + ":" + min + ":" + sec;
+  var parsedHour = setTextDoubleDigit(hour);
+  var parsedMin = setTextDoubleDigit(min);
+  var parsedSec = setTextDoubleDigit(sec);
+
+  var currentTimeText = parsedHour + ":" + parsedMin + ":" + parsedSec;
   return currentTimeText;
 }
 
@@ -20,6 +35,9 @@ function setCurrentTimeText(text) {
   currentTimeElement.innerText = text;
 }
 
+/**
+ * 시계 생성
+ */
 function prepareClock() {
   var currentTimeText = getCurrentTimeText();
   setCurrentTimeText(currentTimeText);
