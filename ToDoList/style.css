@@ -1,6 +1,14 @@
 html,
-body {
+body,
+h2 {
   all: unset;
+}
+
+button {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 
 .background-container {
@@ -33,6 +41,12 @@ body {
   padding: 20px;
   background-color: lightblue;
   border-radius: 20px;
+}
+
+.to-do-list > h2 {
+  font-size: 20px;
+  padding: 8px 0px;
+  font-weight: 600;
 }
 
 .to-do-item {
