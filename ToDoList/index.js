@@ -95,21 +95,56 @@ function setKeyDownEnter() {
   inputKeyword.addEventListener("keypress", keyPressEnter);
 }
 
-/**
- * component 사용
- */
-function printItem() {
-  var itemList = [{ title: "Study" }, { title: "Home" }, { title: "Cart" }];
-  var container = document.querySelector("#to-do-container");
-  var item = document.querySelector("#to-do-box");
-  var itemLabel = item.querySelector("#to-do-title");
-  var htmlList = "";
-  for (var i = 0; i < itemList.length; i++) {
-    htmlList = htmlList + "<div>" + i + "</div>";
+class ToDoList {
+  target;
+  title;
+  items = [];
+
+  constructor(todo) {
+    console.log("?");
+    this.target = document.querySelector("#to-do-container");
+    this.setup(todo);
+    this.render();
+  }
+  setup(todo) {
+    this.title = todo.title;
   }
 
-  console.log("[htmlList]", htmlList);
-  container.innerHTML = container.innerHTML + htmlList;
+  template() {
+    const top = '<div id="to-do-box" class="to-do-box">';
+    const middle = '<h2 id="to-do-title">' + this.title + "</h2>";
+    const bottom = `
+    <div class="to-do-list"></div>
+  <button>
+  추가
+  <img class="icon add" src="./assets/line-plus-svgrepo-com.svg" />
+  </div>
+    `;
+    return top + middle + bottom;
+  }
+
+  render() {
+    this.target.innerHTML = this.target.innerHTML + this.template();
+    this.setEvent();
+  }
+
+  setEvent() {
+    this.target.querySelector("button").addEventListener("click", () => {
+      console.log("[new]");
+    });
+  }
+  setState(newState) {
+    this.$state = { ...this.$state, ...newState };
+    this.render();
+  }
+}
+
+function prepareToDoList() {
+  var itemList = [{ title: "Study" }, { title: "Home" }, { title: "Cart" }];
+
+  for (var i = 0; i < itemList.length; i++) {
+    const todo = new ToDoList(itemList[i]);
+  }
 }
 
 /**
@@ -118,9 +153,11 @@ function printItem() {
 function onloadHandler() {
   prepareClock();
   setInterval(prepareClock, 1000);
-  printItem();
+
   setClickSearchListener();
   setKeyDownEnter();
+
+  prepareToDoList();
 }
 
 //id = current-time이 생성되기 전에 함수호출이 이뤄지면 에러나서 오버라이딩
