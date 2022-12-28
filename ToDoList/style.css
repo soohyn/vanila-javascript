@@ -24,6 +24,8 @@ button {
   align-items: center;
   font-size: 88px;
   font-weight: 700;
+  color: white;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.64);
   height: 50%;
   user-select: none;
 }
