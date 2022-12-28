@@ -1,25 +1,29 @@
-* > {
+html,
+body {
   all: unset;
 }
 
 .background-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border: 1px dotted red;
+  height: 100vh;
 }
 
 .current-time {
   display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 88px;
   font-weight: 700;
-  border: 1px dotted blue;
+  height: 50%;
+  user-select: none;
 }
 
 .to-do-list-container {
   display: flex;
   border: 1px solid blue;
+  padding: 20px;
+  height: 40%;
 }
 
 .to-do-list {
@@ -44,5 +48,40 @@
 }
 
 .to-do-item > label {
+  flex: 1;
   cursor: pointer;
+}
+
+.icon-button {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: flex-end;
+  height: 10%;
+  padding: 20px;
+}
+
+.search-bg-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px dotted red;
+}
+
+.input-container {
+}
+
+.input-container > input {
+}
+
+.button-container {
+  margin: 0px 0px 0px 8px;
+}
+
+.button-container > button {
 }
