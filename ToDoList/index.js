@@ -96,13 +96,29 @@ function setKeyDownEnter() {
 }
 
 /**
+ * component 사용
+ */
+function printItem() {
+  var itemList = [{ title: "Study" }, { title: "Home" }, { title: "Cart" }];
+  var container = document.querySelector("#to-do-container");
+  var item = document.querySelector("#to-do-box");
+  var itemLabel = item.querySelector("#to-do-title");
+  var htmlList = "";
+  for (var i = 0; i < itemList.length; i++) {
+    htmlList = htmlList + "<div>" + i + "</div>";
+  }
+
+  console.log("[htmlList]", htmlList);
+  container.innerHTML = container.innerHTML + htmlList;
+}
+
+/**
  * window.onload 오버라이딩
  */
-
 function onloadHandler() {
   prepareClock();
   setInterval(prepareClock, 1000);
-
+  printItem();
   setClickSearchListener();
   setKeyDownEnter();
 }
