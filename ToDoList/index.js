@@ -43,18 +43,30 @@ function prepareClock() {
   setCurrentTimeText(currentTimeText);
 }
 
+function changeKeyword(keyword) {
+  var textKeyword = document.querySelector("#keyword");
+
+  if (keyword) {
+    textKeyword.innerText = keyword;
+  } else {
+    textKeyword.innerText = "default";
+  }
+}
+
+function changeBackground(keyword) {
+  var backgrountEl = document.querySelector("#background");
+  console.log("[backgrountEl]", backgrountEl);
+  backgrountEl.style.background =
+    "url('https://loremflickr.com/500/500/" + keyword + "')";
+}
+
 /**
  * 배경화면 키워드 버튼 클릭 이벤트
  */
 function clickSearch() {
   var inputKeyword = document.querySelector("#input-keyword");
-  var textKeyword = document.querySelector("#keyword");
-
-  if (inputKeyword.value) {
-    textKeyword.innerText = inputKeyword.value;
-  } else {
-    textKeyword.innerText = "default";
-  }
+  changeKeyword(inputKeyword.value);
+  changeBackground(inputKeyword.value);
 }
 
 /**
@@ -80,7 +92,7 @@ function keyPressEnter(e) {
  */
 function setKeyDownEnter() {
   var inputKeyword = document.querySelector("#input-keyword");
-  inputKeyword.addEventListener("keypress", keyDownEnter);
+  inputKeyword.addEventListener("keypress", keyPressEnter);
 }
 
 /**

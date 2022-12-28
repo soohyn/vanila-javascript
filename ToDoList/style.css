@@ -15,6 +15,7 @@ button {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background: url("https://loremflickr.com/500/500");
 }
 
 .current-time {
