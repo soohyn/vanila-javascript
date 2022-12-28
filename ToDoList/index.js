@@ -49,7 +49,12 @@ function prepareClock() {
 function clickSearch() {
   var inputKeyword = document.querySelector("#input-keyword");
   var textKeyword = document.querySelector("#keyword");
-  textKeyword.innerText = inputKeyword.value;
+
+  if (inputKeyword.value) {
+    textKeyword.innerText = inputKeyword.value;
+  } else {
+    textKeyword.innerText = "default";
+  }
 }
 
 /**
@@ -61,6 +66,24 @@ function setClickSearchListener() {
 }
 
 /**
+ * 엔터이벤트
+ */
+function keyPressEnter(e) {
+  console.log("[e]", e.key);
+  if (e.key === "Enter") {
+    clickSearch();
+  }
+}
+
+/**
+ * 인풋 키프레스이벤트 삽입하기
+ */
+function setKeyDownEnter() {
+  var inputKeyword = document.querySelector("#input-keyword");
+  inputKeyword.addEventListener("keypress", keyDownEnter);
+}
+
+/**
  * window.onload 오버라이딩
  */
 
@@ -69,6 +92,7 @@ function onloadHandler() {
   setInterval(prepareClock, 1000);
 
   setClickSearchListener();
+  setKeyDownEnter();
 }
 
 //id = current-time이 생성되기 전에 함수호출이 이뤄지면 에러나서 오버라이딩
