@@ -4,4 +4,4 @@
 
 1. To-Do-List **`~ing`**
 
-Adviced by [_@junhobaik_](https://github.com/junhobaik)⭐️
+Adviced by @junhobaik⭐️
