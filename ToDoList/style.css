@@ -6,9 +6,10 @@ h2 {
 
 button {
   display: flex;
-  cursor: pointer;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  user-select: none;
 }
 
 .background-container {
@@ -67,6 +68,13 @@ button {
 .to-do-item > label {
   flex: 1;
   cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  user-select: none;
 }
 
 .icon-button {
