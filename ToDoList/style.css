@@ -69,6 +69,7 @@ button {
 .icon-button {
   width: 20px;
   height: 20px;
+  overflow: hidden;
   cursor: pointer;
   user-select: none;
 }
@@ -82,9 +83,15 @@ button {
 
 .search-bg-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   border: 1px dotted red;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .input-container {
@@ -98,4 +105,8 @@ button {
 }
 
 .button-container > button {
+}
+
+.current-bg-keyword {
+  font-size: 24px;
 }
