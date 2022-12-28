@@ -44,12 +44,31 @@ function prepareClock() {
 }
 
 /**
+ * 배경화면 키워드 버튼 클릭 이벤트
+ */
+function clickSearch() {
+  var inputKeyword = document.querySelector("#input-keyword");
+  var textKeyword = document.querySelector("#keyword");
+  textKeyword.innerText = inputKeyword.value;
+}
+
+/**
+ * 버튼 클릭이벤트 삽입하기
+ */
+function setClickSearchListener() {
+  var buttonSearch = document.querySelector("#background-search");
+  buttonSearch.addEventListener("click", clickSearch);
+}
+
+/**
  * window.onload 오버라이딩
  */
 
 function onloadHandler() {
   prepareClock();
   setInterval(prepareClock, 1000);
+
+  setClickSearchListener();
 }
 
 //id = current-time이 생성되기 전에 함수호출이 이뤄지면 에러나서 오버라이딩
