@@ -98,7 +98,6 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px dotted red;
 }
 
 .search-form {
@@ -122,4 +121,5 @@ button {
 
 .current-bg-keyword {
   font-size: 24px;
+  font-weight: 700;
 }
