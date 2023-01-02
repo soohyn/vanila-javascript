@@ -95,13 +95,83 @@ function setKeyDownEnter() {
   inputKeyword.addEventListener("keypress", keyPressEnter);
 }
 
+function prepareToDoList() {
+  var itemList = [
+    { title: "Study", items: [] },
+    { title: "Home", items: [] },
+    { title: "Cart", items: [] },
+    { title: "Cash", items: [] },
+  ];
+
+  const todo = new ToDoList(itemList);
+}
+
+/**
+ * window.onload 오버라이딩
+ */
+function onloadHandler() {
+  prepareClock();
+  setInterval(prepareClock, 1000);
+
+  setClickSearchListener();
+  setKeyDownEnter();
+
+  prepareToDoList();
+}
+
+//id = current-time이 생성되기 전에 함수호출이 이뤄지면 에러나서 오버라이딩
+window.onload = onloadHandler;
+
 class ToDoList {
   target;
+  todoList = [];
+
+  constructor(todoList) {
+    this.target = document.querySelector("#to-do-container");
+    this.setup(todoList);
+    this.template();
+  }
+
+  setup(todoList) {
+    this.todoList = todoList;
+  }
+
+  template() {
+    for (var i = 0; i < this.todoList.length; i++) {
+      const todo = new ToDo(this.todoList[i]);
+    }
+  }
+
+  addTodo(name) {
+    todoList.push({ title: "hi", items: [] });
+  }
+
+  deleteTodo(index) {
+    todolist.splice(index, 1);
+  }
+
+  render() {
+    this.target.innerHTML = this.target.innerHTML + this.template();
+    this.setEvent();
+  }
+
+  setEvent() {
+    this.target.querySelector("button").addEventListener("click", () => {
+      console.log("[new]");
+    });
+  }
+  setState(newState) {
+    this.$state = { ...this.$state, ...newState };
+    this.render();
+  }
+}
+
+class ToDo {
+  target;
   title;
-  items = [];
+  todo = [];
 
   constructor(todo) {
-    console.log("?");
     this.target = document.querySelector("#to-do-container");
     this.setup(todo);
     this.render();
@@ -133,32 +203,9 @@ class ToDoList {
       console.log("[new]");
     });
   }
+
   setState(newState) {
     this.$state = { ...this.$state, ...newState };
     this.render();
   }
 }
-
-function prepareToDoList() {
-  var itemList = [{ title: "Study" }, { title: "Home" }, { title: "Cart" }];
-
-  for (var i = 0; i < itemList.length; i++) {
-    const todo = new ToDoList(itemList[i]);
-  }
-}
-
-/**
- * window.onload 오버라이딩
- */
-function onloadHandler() {
-  prepareClock();
-  setInterval(prepareClock, 1000);
-
-  setClickSearchListener();
-  setKeyDownEnter();
-
-  prepareToDoList();
-}
-
-//id = current-time이 생성되기 전에 함수호출이 이뤄지면 에러나서 오버라이딩
-window.onload = onloadHandler;

@@ -17,6 +17,7 @@ button {
   flex-direction: column;
   height: 100vh;
   background: url("https://loremflickr.com/500/500");
+  overflow: hidden;
 }
 
 .current-time {
@@ -33,6 +34,7 @@ button {
 
 .to-do-box-container {
   display: flex;
+  width: 100%;
   padding: 20px;
   height: 40%;
   -webkit-backdrop-filter: blur(20px);
@@ -46,6 +48,7 @@ button {
   display: flex;
   flex-direction: column;
   width: 200px;
+  min-width: 200px;
   padding: 20px;
   background-color: lightblue;
   border-radius: 20px;
