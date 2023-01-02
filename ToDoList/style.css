@@ -47,6 +47,31 @@ button {
   padding: 20px;
   background-color: lightblue;
   border-radius: 20px;
+  margin: 0px 0px 0px 16px;
+}
+
+.to-do-box:nth-child(1) {
+  margin: 0px 0px 0px 0px;
+}
+
+.add-todo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgray;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.add-todo > .icon {
+  display: flex;
+  width: 52px;
+  height: 52px;
+}
+
+.add-todo:hover {
+  background-color: gray;
+  opacity: 0.64;
 }
 
 .to-do-box > h2 {
@@ -58,6 +83,9 @@ button {
 .to-do-list {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .to-do-item {
