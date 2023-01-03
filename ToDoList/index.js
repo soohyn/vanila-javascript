@@ -100,10 +100,10 @@ function prepareToDoList() {
     { title: "Study", items: [] },
     { title: "Home", items: [] },
     { title: "Cart", items: [] },
-    { title: "Cash", items: [] },
+    // { title: "Cash", items: [] },
   ];
 
-  const todo = new ToDoList(itemList);
+  var todo = new ToDoList(itemList);
 }
 
 /**
@@ -127,39 +127,42 @@ class ToDoList {
   todoList = [];
 
   constructor(todoList) {
-    this.target = document.querySelector("#to-do-container");
+    this.target = document.querySelector("#list");
     this.setup(todoList);
     this.template();
+    this.setEvent();
   }
 
   setup(todoList) {
-    this.todoList = todoList;
+    var reverse = [];
+    for (let i = todoList.length - 1; i >= 0; i--) {
+      reverse.push(todoList[i]);
+    }
+    this.todoList = reverse;
   }
 
   template() {
     for (var i = 0; i < this.todoList.length; i++) {
-      const todo = new ToDo(this.todoList[i]);
+      var todo = new ToDo(this.todoList[i]);
     }
   }
 
-  addTodo(name) {
-    todoList.push({ title: "hi", items: [] });
+  addTodo() {
+    console.log("[this]", this.todoList);
+    var newItem = { title: "hi", items: [] };
+
+    var todo = new ToDo(newItem);
   }
 
   deleteTodo(index) {
     todolist.splice(index, 1);
   }
 
-  render() {
-    this.target.innerHTML = this.target.innerHTML + this.template();
-    this.setEvent();
+  setEvent() {
+    var addTodoButton = document.querySelector("#add-todo");
+    addTodoButton.addEventListener("click", this.addTodo);
   }
 
-  setEvent() {
-    this.target.querySelector("button").addEventListener("click", () => {
-      console.log("[new]");
-    });
-  }
   setState(newState) {
     this.$state = { ...this.$state, ...newState };
     this.render();
@@ -172,7 +175,7 @@ class ToDo {
   todo = [];
 
   constructor(todo) {
-    this.target = document.querySelector("#to-do-container");
+    this.target = document.querySelector("#list");
     this.setup(todo);
     this.render();
   }
@@ -181,9 +184,9 @@ class ToDo {
   }
 
   template() {
-    const top = '<div id="to-do-box" class="to-do-box">';
-    const middle = '<h2 id="to-do-title">' + this.title + "</h2>";
-    const bottom = `
+    var top = '<div id="to-do-box" class="to-do-box">';
+    var middle = '<h2 id="to-do-title">' + this.title + "</h2>";
+    var bottom = `
     <div class="to-do-list"></div>
   <button>
   추가
@@ -194,7 +197,7 @@ class ToDo {
   }
 
   render() {
-    this.target.innerHTML = this.target.innerHTML + this.template();
+    this.target.innerHTML = this.template() + this.target.innerHTML;
     this.setEvent();
   }
 

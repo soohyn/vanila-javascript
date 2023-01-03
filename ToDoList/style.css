@@ -34,7 +34,7 @@ button {
 
 .to-do-box-container {
   display: flex;
-  width: 100%;
+  width: calc(100% - 40px);
   padding: 20px;
   height: 40%;
   -webkit-backdrop-filter: blur(20px);
@@ -42,6 +42,11 @@ button {
   background-color: rgba(255, 255, 255, 0.32);
   overflow-y: hidden;
   overflow-x: scroll;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
 }
 
 .to-do-box {
@@ -54,10 +59,10 @@ button {
   border-radius: 20px;
   margin: 0px 0px 0px 16px;
 }
-
+/* 
 .to-do-box:nth-child(1) {
   margin: 0px 0px 0px 0px;
-}
+} */
 
 .add-todo {
   display: flex;
